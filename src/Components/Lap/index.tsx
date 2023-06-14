@@ -8,26 +8,28 @@ interface lapProps {
 }
 
 export default function Lap({ lapNumber, time, overAlltime }: lapProps) {
-  const hours = Math.floor(time / 3600);
-  const minutes = Math.floor((time % 3600) / 60);
-  const seconds = Math.floor(time % 60);
+  const minutes = Math.floor(time / 3600);
+  const seconds = Math.floor((time % 3600) / 60);
+  const centiseconds = Math.floor(time % 100);
 
-  const hoursOverAll = Math.floor(overAlltime / 3600);
-  const minutesOverAll = Math.floor((overAlltime % 3600) / 60);
-  const secondsOverall = Math.floor(overAlltime % 60);
+  const minutesOverAll = Math.floor(overAlltime / 3600);
+  const secondsOverAll = Math.floor((overAlltime % 3600) / 60);
+  const centiSecondsOverall = Math.floor(overAlltime % 100);
 
   return (
     <Container>
       <LapNumber>{lapNumber < 10 ? "0" + lapNumber : lapNumber}</LapNumber>
       <LapTime>
-        {hours < 10 ? "0" + hours : hours} :{" "}
-        {minutes < 10 ? "0" + minutes : minutes}.
-        {seconds < 10 ? "0" + seconds : seconds}
+        {minutes < 10 ? "0" + minutes : minutes} :{" "}
+        {seconds < 10 ? "0" + seconds : seconds}.
+        {centiseconds < 10 ? "0" + centiseconds : centiseconds}
       </LapTime>
       <OverallTime>
-        {hoursOverAll < 10 ? "0" + hoursOverAll : hoursOverAll} :{" "}
-        {minutesOverAll < 10 ? "0" + minutesOverAll : minutesOverAll}.
-        {secondsOverall < 10 ? "0" + secondsOverall : secondsOverall}
+        {minutesOverAll < 10 ? "0" + minutesOverAll : minutesOverAll} :{" "}
+        {secondsOverAll < 10 ? "0" + secondsOverAll : secondsOverAll}.
+        {centiSecondsOverall < 10
+          ? "0" + centiSecondsOverall
+          : centiSecondsOverall}
       </OverallTime>
     </Container>
   );

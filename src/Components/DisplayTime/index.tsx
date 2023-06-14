@@ -6,16 +6,16 @@ interface DisplayTimeProps {
 }
 
 export default function DisplayTime({ time }: DisplayTimeProps) {
-  const hours = Math.floor(time / 3600);
-  const minutes = Math.floor((time % 3600) / 60);
-  const seconds = Math.floor(time % 60);
+  const minutes = Math.floor(time / 3600);
+  const seconds = Math.floor((time % 3600) / 60);
+  const centiSeconds = Math.floor(time % 100);
 
   return (
     <Container>
       <TextTime>
-        {hours < 10 ? "0" + hours : hours} :{" "}
-        {minutes < 10 ? "0" + minutes : minutes}.
-        {seconds < 10 ? "0" + seconds : seconds}
+        {minutes < 10 ? "0" + minutes : minutes} :{" "}
+        {seconds < 10 ? "0" + seconds : seconds}.
+        {centiSeconds < 10 ? "0" + centiSeconds : centiSeconds}
       </TextTime>
     </Container>
   );
